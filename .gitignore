@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+
+# Dependencies and build output
+node_modules/
+dist/
+dist-ssr/
+*.tsbuildinfo
+coverage/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and editor files
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

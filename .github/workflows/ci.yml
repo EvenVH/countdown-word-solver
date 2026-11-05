@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Tests, lint, build and dictionary consistency
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Install frontend dependencies
+        run: npm ci
+      - name: Test data preparation
+        working-directory: .
+        run: python -m unittest discover -s scripts -p "test_*.py"
+      - name: Check generated dictionary files
+        working-directory: .
+        run: |
+          python scripts/clean_words.py
+          python scripts/build_search_index.py
+          git diff --exit-code -- data/words.txt frontend/src/generated/word-index.json
+      - name: Test browser search
+        run: npm test
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build

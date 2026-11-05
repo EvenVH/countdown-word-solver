@@ -1,0 +1,66 @@
+main {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+form {
+  margin-top: 24px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  font: inherit;
+}
+
+button {
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 6px;
+  background: #3153be;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+:focus-visible {
+  outline: 3px solid #3153be;
+  outline-offset: 3px;
+}
+
+#search-error {
+  color: #b51f39;
+}
+
+section {
+  margin-top: 24px;
+}
+
+.word-group {
+  margin-top: 24px;
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+}
+
+small {
+  font-weight: normal;
+}
